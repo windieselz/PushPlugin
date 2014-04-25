@@ -52,4 +52,8 @@
 - (void)setNotificationMessage:(NSDictionary *)notification;
 - (void)notificationReceived;
 
+-(void)successWithMessage:(NSString *)message;
+-(void)failWithMessage:(NSString *)message withError:(NSError *)error;
+
+
 @end
