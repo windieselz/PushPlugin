@@ -55,13 +55,13 @@ static char launchNotificationKey;
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
     PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
-    [pushHandler successWithMessage:@"can register push"];
+    //[pushHandler successWithMessage:@"can register push"];
     [pushHandler didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
-    [pushHandler successWithMessage:@"can't register push"];
+    //[pushHandler successWithMessage:@"can't register push"];
     [pushHandler didFailToRegisterForRemoteNotificationsWithError:error];
 }
 

@@ -48,7 +48,7 @@
 	self.callbackId = command.callbackId;
 
     NSMutableDictionary* options = [command.arguments objectAtIndex:0];
-    [self successWithMessage:@"start register push xx"];
+    //[self successWithMessage:@"start register push xx"];
     /*
     UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeNone;
     id badgeArg = [options objectForKey:@"badge"];
@@ -89,11 +89,11 @@
     */
 
     isInline = NO;
-    [self successWithMessage:@"before run register push"];
+    //[self successWithMessage:@"before run register push"];
     [[UIApplication sharedApplication]
      registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
 
-	[self successWithMessage:@"wait register push"];
+	//[self successWithMessage:@"wait register push"];
 	if (notificationMessage)			// if there is a pending startup notification
 		[self notificationReceived];	// go ahead and process it
 }
@@ -107,7 +107,7 @@
 */
 
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [self successWithMessage:@"before return token register push"];
+    //[self successWithMessage:@"before return token register push"];
     NSMutableDictionary *results = [NSMutableDictionary dictionary];
     NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""]
                         stringByReplacingOccurrencesOfString:@">" withString:@""]
