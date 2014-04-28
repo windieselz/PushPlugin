@@ -49,8 +49,6 @@
 
     NSMutableDictionary* options = [command.arguments objectAtIndex:0];
     [self successWithMessage:@"start register push"];
-
-    /*
     UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeNone;
     id badgeArg = [options objectForKey:@"badge"];
     id soundArg = [options objectForKey:@"sound"];
@@ -79,17 +77,17 @@
     }
     else if ([alertArg boolValue])
         notificationTypes |= UIRemoteNotificationTypeAlert;
-    */
+    
     
     self.callback = [options objectForKey:@"ecb"];
 
-   /* if (notificationTypes == UIRemoteNotificationTypeNone)
+    if (notificationTypes == UIRemoteNotificationTypeNone)
         NSLog(@"PushPlugin.register: Push notification type is set to none");
 
-    */
-        
-    isInline = NO;
+    
 
+    isInline = NO;
+    [self successWithMessage:@"before run register push"];
     [[UIApplication sharedApplication]
      registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
 
