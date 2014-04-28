@@ -93,9 +93,11 @@
     [[UIApplication sharedApplication]
      registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
     
-    //[self successWithMessage:@"wait register push"];
+    [self successWithMessage:@"wait register push"];
     if (notificationMessage)            // if there is a pending startup notification
         [self notificationReceived];    // go ahead and process it
+
+    [self successWithMessage:@"end task register push"];
 }
 
 /*
