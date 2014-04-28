@@ -48,7 +48,7 @@
     self.callbackId = command.callbackId;
     
     NSMutableDictionary* options = [command.arguments objectAtIndex:0];
-    //[self successWithMessage:@"start register push xx"];
+    [self successWithMessage:@"start register push xx"];
     /*
      UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeNone;
      id badgeArg = [options objectForKey:@"badge"];
@@ -89,7 +89,7 @@
      */
     
     isInline = NO;
-    //[self successWithMessage:@"before run register push"];
+    [self successWithMessage:@"before run register push"];
     [[UIApplication sharedApplication]
      registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
     
@@ -106,8 +106,15 @@
  }
  */
 
+-(void) showAlert:(NSString *) msg{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Really reset?" message:msg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+    // optional - add more buttons:
+    [alert addButtonWithTitle:@"Yes"];
+    [alert show];
+}
+
 - (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    //[self successWithMessage:@"before return token register push"];
+    [self successWithMessage:@"before return token register push"];
     NSMutableDictionary *results = [NSMutableDictionary dictionary];
     NSString *token = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"withString:@""]
                         stringByReplacingOccurrencesOfString:@">" withString:@""]
@@ -225,6 +232,7 @@
     [self successWithMessage:[NSString stringWithFormat:@"app badge count set to %d", badge]];
 }
 -(void)successWithMessage:(NSString *)message{
+    [self showAlert:message];
     [self performSelectorInBackground:@selector(sendMsgBg:) withObject:message];
 }
 -(void) sendMsgBg:(NSString *) msg{
