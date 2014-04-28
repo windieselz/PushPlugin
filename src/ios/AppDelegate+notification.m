@@ -52,16 +52,22 @@ static char launchNotificationKey;
 	}
 }
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+-(void) showAlert:(NSString *) msg{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Really reset?" message:msg delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+    // optional - add more buttons:
+    [alert addButtonWithTitle:@"Yes"];
+    [alert show];
+}
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [self showAlert:@"can register push"];
     PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
-    [pushHandler successWithMessage:@"can register push"];
     [pushHandler didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    [self showAlert:@"can't register push"];
     PushPlugin *pushHandler = [self getCommandInstance:@"PushPlugin"];
-    [pushHandler successWithMessage:@"can't register push"];
     [pushHandler didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
