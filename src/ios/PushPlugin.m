@@ -48,7 +48,8 @@
 	self.callbackId = command.callbackId;
 
     NSMutableDictionary* options = [command.arguments objectAtIndex:0];
-    [self successWithMessage:@"start register push"];
+    [self successWithMessage:@"start register push xx"];
+    /*
     UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeNone;
     id badgeArg = [options objectForKey:@"badge"];
     id soundArg = [options objectForKey:@"sound"];
@@ -85,6 +86,7 @@
         NSLog(@"PushPlugin.register: Push notification type is set to none");
 
     
+    */
 
     isInline = NO;
     [self successWithMessage:@"before run register push"];
