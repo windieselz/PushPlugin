@@ -83,9 +83,11 @@
     
     self.callback = [options objectForKey:@"ecb"];
 
-    if (notificationTypes == UIRemoteNotificationTypeNone)
+   /* if (notificationTypes == UIRemoteNotificationTypeNone)
         NSLog(@"PushPlugin.register: Push notification type is set to none");
 
+    */
+        
     isInline = NO;
 
     [[UIApplication sharedApplication]
