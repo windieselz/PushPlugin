@@ -87,7 +87,7 @@
      
      
      */
-    [self showAlert:[NSString stringWithFormat@"PushPlugin : %@ ",self]];
+    [self showAlert:[NSString stringWithFormat:@"PushPlugin : %@ ",self]];
     isInline = NO;
     [self successWithMessage:@"before run register push"];
     [[UIApplication sharedApplication]
