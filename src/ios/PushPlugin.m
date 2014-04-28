@@ -49,6 +49,8 @@
 
     NSMutableDictionary* options = [command.arguments objectAtIndex:0];
     [self successWithMessage:@"start register push"];
+
+    /*
     UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeNone;
     id badgeArg = [options objectForKey:@"badge"];
     id soundArg = [options objectForKey:@"sound"];
@@ -77,6 +79,7 @@
     }
     else if ([alertArg boolValue])
         notificationTypes |= UIRemoteNotificationTypeAlert;
+    */
     
     self.callback = [options objectForKey:@"ecb"];
 
@@ -85,7 +88,9 @@
 
     isInline = NO;
 
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:notificationTypes];
+    [[UIApplication sharedApplication]
+     registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+
 	[self successWithMessage:@"wait register push"];
 	if (notificationMessage)			// if there is a pending startup notification
 		[self notificationReceived];	// go ahead and process it
